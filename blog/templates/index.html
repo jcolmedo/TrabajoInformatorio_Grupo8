@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}INICIO{% endblock %}
+
+{% block h1 %}SENDEROS{% endblock %}
+
+{% block main %}
+{% load static %}
+<div class="container" >
+    <div class="col-12"  >
+        <div class="card" >
+            <h3 class= "card-header" align="center">Sobre Nosotros</h3>
+            <div class="card-body" align="center">
+                <div>
+                    <p class="text">
+                        <strong>¡Bienvenidos a Senderos! Somos una "Reserva Educativa Experimental con una pequeña 
+                        Granja Auto Sustentable"</strong>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+<div>
+    <div class="container">
+        <div class="col-12">
+            <div class="card" >
+                <h3 class= "card-header" align="center"></h3>
+                <div class="card-body">
+                    <center align="center">
+                        <img src="{% static 'img/mariposas.jpg' %}" style="max-width:100%;width:auto;height:auto;" align="center">
+                    </center> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="container">
+        <div class="col-12">
+            <div class="card" >
+                <h3 class= "card-header" align="center"></h3>
+                <div class="card-body">
+                    <center align="center">
+                        <div>
+                            <strong>Donde estamos</strong> 
+                        </div>
+                        <div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3566.5648277345144!2d-59.27166404878068!3d-26.630392187821474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94447a1eb678d9e7%3A0x28d1f260426be028!2sReserva%20Educativa%20Experimental%20%22SENDEROS%22!5e0!3m2!1ses-419!2sar!4v1671086046762!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        
+                    </center> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+      <div class= "col-md-12 search">
+        <form method="GET">
+          <div id="custom-search-input" align="center">
+            ULTIMOS 3 Post
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<div class="container" align="center">
+    <div class="col-14">
+        <div class="row">
+            <dir class="col-lg-8 col-md-10 mx-auto">
+                {% if posts %}
+                    {% for post in posts %}
+                        <div class="card">
+                            
+                                <h3 class="post-title">
+                                    Titulo: {{ post.titulo }}
+                                </h3>
+                                <h4 class="post-subtitle">
+                                    Resumen: {{post.resumen}}
+                                </h4>
+                                <h5 class="post-subtitle">
+                                    Categoria: {{ post.categoria }}
+                                </h5>
+                            
+                            <p class="post-meta">Escrito por 
+                                <strong>{{ post.usuario }} </strong> el 
+                                {{ post.fecha_creacion }}
+                            </p>
+                            <img src="{{ post.imagen.url }}" alt="">
+                        </div>
+                        <a href="{% url 'post' post.id %}" class="btn btn-primary">Ver mas</a>
+                    {% endfor %}
+                {% else %}
+                <h1>No existen post registrados! </h1>
+                {% endif %}
+            </dir>
+        {% comment %} </div> {% endcomment %}
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+</div>
+
+{% endblock %}

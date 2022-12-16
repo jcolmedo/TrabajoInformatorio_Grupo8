@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block main %}
+{% block barra_busqueda %}
+{% endblock barra_busqueda %}
+
+    {% load static %}
+
+    <div class="container"  align="center">
+        <div class="col-12">
+            <div class="card" align="center">
+                <h2 class="card-header" align="center" >Perfil de {{user.username}}</h2>
+                <div class="card-body"  align="center">
+                    <div id="iconUsuarioContainer" align="center">
+                        <img id="iconUserImg" src="{% static 'img/iconUsuario.png' %}" alt="iconUsuario">
+                    </div>
+        
+                    <p><b>Usuario:</b> {{ user.username }}</p>
+                    <p><b>Email:</b> {{ user.email }}</p>
+                    <p><b>Nombre:</b> {{ user.first_name }}</p>
+                    <p><b>Apellido:</b> {{ user.last_name }}</p>
+                    <p><b>Provincia:</b> {{ user.provincia }}</p>
+                    <p><b>Ciudad:</b> {{ user.ciudad }}</p>
+        
+                    <p><b>Descripción:</b>
+                        {% if user.descripcion_propia != None %}
+                            {{ user.descripcion_propia }}
+                        {% else %}
+                            Sin especificar
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <a href="{% url 'editar_perfil' user.id %}" class="btn btn-success">Editar Perfil</a>
+        </div>
+
+    </div >
+
+{% endblock %}

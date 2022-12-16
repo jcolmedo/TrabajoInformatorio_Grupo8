@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Post{% endblock %}
+
+{% block main %}
+
+
+    {% load static %}
+    <br>
+    <div class="container">
+        <div class="row">
+          <div class= "col-md-12 search">
+            <form method="GET">
+              <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                  <input type="text" class="form-control" placeholder="Buscar en Categoria, Titulo o Resumen" name="buscar">
+                  <span class="input-group-list">
+                    <i class="icon icon-search"></i>
+                    <button type="submit" class="boton btn-success">Buscar</button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    <div class="container">
+        <div class="col-14">
+            <div class="row">
+                <dir class="col-lg-8 col-md-10 mx-auto">
+                    {% if posts %}
+                        {% for post in posts %}
+                            <div class="card">
+                              <a href="{% url 'post' post.id %}" align="center">
+                                <h3 class="post-title">
+                                  Titulo: {{ post.titulo }}
+                              </h3>
+                              </a>
+                              <img src="{{ post.imagen.url }}">
+                                <a href="{% url 'post' post.id %}">
+                                  
+
+                                    
+                                    <h4 class="post-subtitle">
+                                        Resumen: {{post.resumen}}
+                                    </h4>
+                                    <h5 class="post-subtitle">
+                                        Categoria: {{ post.categoria }}
+                                    </h5>
+                                </a>
+                                
+                                <p class="post-meta">Escrito por 
+                                    <strong>{{ post.usuario }} </strong> el 
+                                    {{ post.fecha_creacion }}
+                                </p>
+                                
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                    <h1>No existen post registrados! </h1>
+                    {% endif %}
+                </dir>
+            {% comment %} </div> {% endcomment %}
+        </div>
+        {% comment %} {% endfor %} {% endcomment %}
+    </div>
+    
+
+
+
+
+{% endblock %}

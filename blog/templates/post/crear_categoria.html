@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Crear Categoria{% endblock %}
+    {% block main %}
+    {% load static %}
+    <div class="container">
+        <div class="card">
+            <form method="POST" enctype="multipart/form-data" align="center">
+                {% csrf_token %}
+                    <div class="card" >
+                        <h5 class= "card-header">Posteo</h5>
+                        <div class="card-body">
+                            {{categoria.as_p}}
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <a href="{% url 'crear_post' %}" class="btn btn-danger">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

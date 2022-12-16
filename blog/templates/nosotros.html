@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}INICIO{% endblock %}
+
+{% block h1 %}SENDEROS{% endblock %}
+
+{% block main %}
+
+    {% load static %}
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="card" >
+                    <h3 class= "card-header" align="center">Sobre Nosotros</h3>
+                    <div class="card-body">
+                        <p class="text">
+                            Senderos es una "Reserva Educativa Experimental con una pequeña 
+                            Granja Auto Sustentable" ubicada en la Legua 110 Colonia Sur sobre la 
+                            margen de la Ruta Provincial N 90 , 10 km antes de llegar a Gral. San 
+                            Martín, Chaco; es un predio chico de 19 ha en total , distribuida en 16 
+                            ha de masa boscosa bosque nativo con pequeños ambientes de Pajonales, 
+                            pastizales, bosque en galerías y Sotobosque y 3 ha agrícola , su historia 
+                            es reciente ya que del mes de octubre del 2015 se empezo a dar forma a 
+                            un largo sueño que de a poco va tomando realidad , en la actualidad se 
+                            esta construyendo un pequeño y modesto asentamiento principal a orillas 
+                            del Río de Oro con un Senderos principal "Los Ariscos" para su llegada al 
+                            mismo.
+                            La Reserva comprende toda la masa boscosa muy rica en su 
+                            biodiversidad y parte de pastizales del sector agrícola .
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container">
+                <div class="col-12">
+                    <div class="card" >
+                        <h3 class= "card-header" align="center"></h3>
+                        <div class="card-body">
+                            <center align="center">
+                                <img src="{% static 'img/Senderos.jpg' %}" style="max-width:100%;width:auto;height:auto;" align="center">
+                            </center> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card" >
+                    <h3 class= "card-header" align="center">Nuestros Objetivos</h3>
+                    <div class="card-body">
+                        <p class="text">
+                            - Proteger un sector de ambientes naturales para conservar la 
+                            diversidad de la flora y fauna.<br>
+                            - Resguardar los hábitats principalmente de las especies que están 
+                            amenazadas y en peligro de extinción.<br>
+                            - Realizar un inventario de la totalidad de la masa boscosa para 
+                            identificar sus plantas y utilidades sin poner en riesgo su evolución y con 
+                            el menor impacto ambiental.<br>
+                            - Vincular la Conservación con el Desarrollo Sustentable para generar 
+                            beneficios mutuos. <br>
+                            - Facilitar y realizar la tarea de Investigación poniendo a disposición de 
+                            todos los Instituto Tecnológico el espacio físico y natural para el desarrollo 
+                            de estudios sistémicos; a los Estudiantes y/o Investigadores la realización 
+                            de sus tareas de Investigación , ya sea 
+                            tesis/maestrías/saber/conocimiento/etc…<br>
+                            Mi pasión por los hongos…
+                            "...entrar al mundo mágico de los hongos a fin de comprender la 
+                            profundidad de la Naturaleza, su cuidado y conservación…si pudiera sería 
+                            un bosque de hongos para salvar nuestra especie humana…"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

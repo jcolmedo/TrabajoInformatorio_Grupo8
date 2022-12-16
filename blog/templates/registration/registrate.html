@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Registrate{% endblock %}
+
+{% block h1 %}SENDEROS{% endblock %}
+
+{% block main %}
+{% block barra_busqueda %}
+{% endblock barra_busqueda %}
+
+    {% load static %}
+
+    <main id="mainRegistrate">
+
+        <h2 class="titulo">Registro</h2>
+
+        <p>Para generar tu usuario y formar parte de nuestra comunidad, completá el siguiente formulario. </p>
+        <p class="negrita"> Los campos con (*) son obligatorios</p>
+
+        <form id="registroUsuario" method="post">
+
+            {% csrf_token %}
+            {{ formulario }}
+
+            <button type="submit" class="btn btn-success">Registrarme</button>
+            
+        </form>
+        <br>
+    </main>
+
+{% endblock %}

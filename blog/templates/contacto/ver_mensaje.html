@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<div class="container" align="center">
+    <div class="col-12" align="center">
+        <div class="row">
+                {% csrf_token %}
+                <div class="card"  >
+                    <h5 class= "card-header" >Mensaje de {{ mensaje.nombre }}</h5>
+                    <div class="card-body" >
+                        <div>
+                            <table>
+                                <tr>
+                                    <th class="col-8">
+                                        {{ mensaje.correo }}
+                                    </th>
+                                        
+                                    {% if  mensaje.tipo_consulta == 0 %}
+                                        <td>Consulta</td>
+                                    {% elif  mensaje.tipo_consulta  == 1%}
+                                        <td>Reclamo</td>
+                                    {% elif  mensaje.tipo_consulta  == 2%}
+                                        <td>Sugerencia</td>
+                                    {% else %}
+                                        <td>Felicitaciones</td>
+                                    {% endif %}
+                                        
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            {{ mensaje.mensaje }}
+                        </div>
+                        <br>
+                            <a href="{% url 'ver_todos' %}" class="btn btn-danger">Atras</a>
+                    </div>
+                </div>           
+        </div>
+    </div>
+</div>
+
+{% endblock %}

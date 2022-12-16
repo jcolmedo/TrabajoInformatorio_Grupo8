@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Adopción responsable de mascotas">
+    <meta name="robots" content="index,follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'img/logo_reserva.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'css/inocoFace.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prueba.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    
+    <title>Senderos</title>
+</head>
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <div id="topbar">
+              <ul>   
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'posteos' %}">Todos los Post</a></li>
+                  {% if user.is_staff %}
+                    <li><a href="{% url 'crear_post' %}">Crear Post</a></li>
+                    <li><a href="{% url 'ver_todos' %}">Mensajes</a></li>
+                  {% else %}
+                  <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                  {% endif %}
+                <li><a href="{% url 'ver_perfil' %}">Perfil</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                <li><a href="{% url 'registrate' %}">Registro</a></li>
+                <li><a href="{% url 'login' %}">Entrar</a></li>
+
+                {% endif %}
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+          <header>
+
+          </header>
+
+        {% block main %}{% endblock %}
+
+        <footer id="pieDePag" align="center">
+          <a href="https://www.facebook.com/profile.php?id=100063478005717&mibextid=ZbWKwL" class="zocial facebook"><span>Siguenos en Facebook</span></a>
+            <p>SENDEROS, RESERVA EDUCATIVA EXPERIMENTAL Y GRANJA AUTOSUSTENTABLE</p>
+            <P>Produced by Grupo 8 - Informatorio Chaco</P>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

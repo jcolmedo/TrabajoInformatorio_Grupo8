@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Post{% endblock %}
+
+{% block main %}
+
+
+    {% load static %}
+    <div class="container">
+        <div class="col-14">
+            <div class="row">
+                <dir class="col-lg-8 col-md-10 mx-auto">
+                            <div class="card">
+                                <img src="{{ post.imagen.url }}" alt="">
+                                    <h3 class="post-title">
+                                        Titulo: {{ post.titulo }}
+                                    </h3>
+                                    <h4 class="post-subtitle">
+                                        Resumen: {{post.resumen}}
+                                    </h4>
+                                    <h5 class="post-subtitle">
+                                        Categoria: {{ post.categoria }}
+                                    </h5>
+                                
+                                <p class="post-meta">Escrito por 
+                                    <strong>{{ post.usuario }} </strong> el 
+                                    {{ post.fecha_creacion }}
+                                </p>
+                                
+                                <h6 class="post-text">
+                                    {{ post.texto }}
+                                </h6>
+                                
+                            </div>
+                            <div align="endfor">
+                                <a href="javascript: history.go(-1)" class="btn btn-danger">Atras</a>
+                            </div>
+                            <br>
+                </dir>
+            
+        </div>
+        
+    </div>
+    
+
+
+
+
+{% endblock %}

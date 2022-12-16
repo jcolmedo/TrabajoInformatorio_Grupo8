@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Crear Post{% endblock %}
+    {% block main %}
+    {% load static %}
+    <div class="container">
+        <div class="card">
+            <form method="POST" enctype="multipart/form-data" align="center">
+                {% csrf_token %}
+                    <div class="card" >
+                        <h5 class= "card-header">Posteo</h5>
+                        <div class="card-body">
+                            {{post_form.as_p}}
+                            <a href="{% url 'crear_categoria' %}" class="btn btn-success">Crear Nueva Categoria</a>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

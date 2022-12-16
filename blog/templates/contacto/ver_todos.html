@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block main %}
+    
+        <table>
+            <tr >
+            <th class="col-2">Nombre</th>
+            <th class="col-2">Correo</th>
+            <th class="col-2">Tipo de consulta</th>
+            <th class="col-2">Ver Mensaje</th>
+            </tr>
+        {% for mensaje in mensajes %}
+            {% if mensaje.no_leido %}
+            
+            <tr>
+            <td ><strong>{{ mensaje.nombre }}</strong></td>
+            
+            <td><strong>{{ mensaje.correo }}</strong></td>
+            
+            {% if  mensaje.tipo_consulta == 0 %}
+                <td><strong>Consulta</strong></td>
+            {% elif  mensaje.tipo_consulta  == 1%}
+                <td><strong>Reclamo</strong></td>
+            {% elif  mensaje.tipo_consulta  == 2%}
+                <td><strong>Sugerencia</strong></td>
+            {% else %}
+                <td><strong>Felicitaciones</strong></td>
+            {% endif %}
+            <td>
+                <a href="{% url 'ver_mensaje' mensaje.id %}" type="submit" class="btn btn-success">Leer</a>
+            </td>
+            </tr>
+            
+            {% else %}
+                <tr>
+                <td >{{ mensaje.nombre }}</td>
+                
+                <td>{{ mensaje.correo }}</td>
+                
+                {% if  mensaje.tipo_consulta == 0 %}
+                    <td>Consulta</td>
+                {% elif  mensaje.tipo_consulta  == 1%}
+                    <td>Reclamo</td>
+                {% elif  mensaje.tipo_consulta  == 2%}
+                    <td>Sugerencia</td>
+                {% else %}
+                    <td>Felicitaciones</td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'ver_mensaje' mensaje.id %}" type="submit" class="btn btn-success">Leer</a>
+                </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </table>
+        
+{% endblock %}
