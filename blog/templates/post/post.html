@@ -6,44 +6,74 @@
 
 
     {% load static %}
-    <div class="container">
-        <div class="col-14">
-            <div class="row">
-                <dir class="col-lg-8 col-md-10 mx-auto">
-                            <div class="card">
-                                <img src="{{ post.imagen.url }}" alt="">
-                                    <h3 class="post-title">
-                                        Titulo: {{ post.titulo }}
-                                    </h3>
-                                    <h4 class="post-subtitle">
-                                        Resumen: {{post.resumen}}
-                                    </h4>
-                                    <h5 class="post-subtitle">
-                                        Categoria: {{ post.categoria }}
-                                    </h5>
-                                
-                                <p class="post-meta">Escrito por 
-                                    <strong>{{ post.usuario }} </strong> el 
-                                    {{ post.fecha_creacion }}
-                                </p>
-                                
-                                <h6 class="post-text">
-                                    {{ post.texto }}
-                                </h6>
-                                
-                            </div>
-                            <div align="endfor">
-                                <a href="javascript: history.go(-1)" class="btn btn-danger">Atras</a>
-                            </div>
-                            <br>
-                </dir>
+    <div class="section">
+        <div class="container">
+            <div class="col-14">
+                <div class="row">
+                    <dir class="col-lg-8 col-md-10 mx-auto">
+                                <div class="card">
+                                    <img src="{{ post.imagen.url }}" alt="">
+                                        <h3 class="post-title">
+                                            Titulo: {{ post.titulo }}
+                                        </h3>
+                                        <h4 class="post-subtitle">
+                                            Resumen: {{post.resumen}}
+                                        </h4>
+                                        <h5 class="post-subtitle">
+                                            Categoria: {{ post.categoria }}
+                                        </h5>
+                                    
+                                    <p class="post-meta">Escrito por 
+                                        <strong>{{ post.usuario }} </strong> el 
+                                        {{ post.fecha_creacion }}
+                                    </p>
+                                    
+                                    <h6 class="post-text">
+                                        {{ post.texto }}
+                                    </h6>
+                                    
+                                </div>
+
+                                <br>
+                    </dir>
+                
+            </div>
             
         </div>
-        
     </div>
-    
-
-
+    <div class="section">
+        <div class= "container" >
+            <h5> Comentarios ( {{ cantComentarios }} )</h3>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="media-list">
+                        {% for comentario in comentarios  %}
+                        <div>
+                            <div class="media-body">
+                                <div class="small-1">
+                                    <b> {{comentario.nombre}}</b>
+                                    <time class="ml-4 opaciy-70 small-3"> {{comentario.fecha_creacion}}</time>
+                                </div>
+                                <p> {{comentario.contenido}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% if user.is_authenticated %}
+                    </div>
+                    <form method="POST" action="{% url 'post' post.id  %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{formComentarios}}
+                        </div> 
+                        <button class="btn btn-primary btn-block " type="submit">Comentar</button>   
+                    </div>
+                    {% endif %}
+            </div>
+            <div align="endfor">
+                <a href="javascript: history.go(-1)" class="btn btn-danger">Atras</a>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}

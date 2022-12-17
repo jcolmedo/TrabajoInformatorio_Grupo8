@@ -29,7 +29,7 @@ def verMensaje(request,id):
 
 def verTodosMensaje(request):
 	
-	mensajes=Contacto.objects.all()
+	mensajes=Contacto.objects.all().order_by("-fecha_creacion")
 	context={
 			"mensajes":mensajes
 	}

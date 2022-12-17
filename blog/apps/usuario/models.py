@@ -11,3 +11,5 @@ class Usuario(AbstractUser):
     descripcion_propia = models.CharField(max_length=2000, null=True)
 
 
+
+

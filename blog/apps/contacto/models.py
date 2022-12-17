@@ -13,6 +13,8 @@ class Contacto(models.Model):
     tipo_consulta=models.IntegerField(choices=opciones_consulta)
     mensaje=models.TextField(max_length=600, blank=True, null=True)
     no_leido=models.BooleanField(default=True)
+    fecha_creacion=models.DateField(auto_now_add=True)
+
     
     def __str__(self) :
         return self.nombre

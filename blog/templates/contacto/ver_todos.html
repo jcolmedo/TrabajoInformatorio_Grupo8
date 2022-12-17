@@ -8,11 +8,12 @@
             <th class="col-2">Tipo de consulta</th>
             <th class="col-2">Ver Mensaje</th>
             </tr>
+        
         {% for mensaje in mensajes %}
             {% if mensaje.no_leido %}
             
             <tr>
-            <td ><strong>{{ mensaje.nombre }}</strong></td>
+            <td ><strong>(No leido) {{ mensaje.nombre }}</strong></td>
             
             <td><strong>{{ mensaje.correo }}</strong></td>
             

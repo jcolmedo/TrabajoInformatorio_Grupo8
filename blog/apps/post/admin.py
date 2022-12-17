@@ -16,6 +16,18 @@ class PostAdmin(admin.ModelAdmin):
     #como categoria es en realidad la clase, para tomar el nombre tenemos que usar el __
     list_filter=("categoria__nombre", "publicado")
 
+class ComentarioAdmin(admin.ModelAdmin):
+    ordering=("id", "nombre", "post", "fecha_creacion")
+    search_fields=("id", "nombre", "post", "fecha_creacion")
+    list_display=("id", "nombre", "post", "fecha_creacion")
+    list_filter=("post","nombre")
+
+
+
+
+
+
+admin.site.register(Comentarios,ComentarioAdmin)
 admin.site.register(Categoria,CategoriaAdmin)
 admin.site.register(Post,PostAdmin)
 

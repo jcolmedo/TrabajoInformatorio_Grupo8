@@ -13,3 +13,10 @@ class CategForm(forms.ModelForm):
     class Meta:
         model= Categoria
         fields= ["nombre",]
+
+class ComentForm(forms.ModelForm):
+    contenido=forms.CharField(widget=forms.Textarea(attrs={"row":"4",}))
+    
+    class Meta:
+        model = Comentarios
+        fields=["contenido",]

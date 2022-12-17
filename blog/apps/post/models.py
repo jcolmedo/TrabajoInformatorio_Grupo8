@@ -31,5 +31,11 @@ class Post(models.Model):
     def __str__(self):
         return str(self.titulo)
 
+class Comentarios(models.Model):
+    nombre=models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    fecha_creacion=models.DateField(auto_now_add=True)
+    post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    contenido=models.TextField(max_length=600,blank=False,null=False)
+
 
 
