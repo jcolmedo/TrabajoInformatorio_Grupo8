@@ -4,7 +4,7 @@
 
 {% block main %}
 
-
+{%load social_share%}
     {% load static %}
     <div class="section">
         <div class="container">
@@ -69,11 +69,22 @@
                     </div>
                     {% endif %}
             </div>
+            <div>
+            </div>
             <div align="endfor">
                 <a href="javascript: history.go(-1)" class="btn btn-danger">Atras</a>
             </div>
         </div>
     </div>
+<br>
+<div class="zocial facebook">
+    <span>{% post_to_facebook object_or_url "Post to Facebook"%}</span>
+</div>
+<br>
+
+<div class="zocial twitter">
+        <span>{% post_to_twitter object_or_url ""%}</span>
+</div>
 
 
 {% endblock %}

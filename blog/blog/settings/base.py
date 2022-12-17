@@ -34,6 +34,7 @@ LOGOUT_REDIRECT_URL = 'home'
 # Application definition
 
 INSTALLED_APPS = [
+    'django_social_share',
     "apps.contacto",
     "apps.home",
     "apps.nosotros",
