@@ -1,70 +1,157 @@
-<!DOCTYPE html>
-<html lang="es">
-
 {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Adopción responsable de mascotas">
-    <meta name="robots" content="index,follow">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SENDEROS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="icon" href="{% static 'img/logo_reserva.ico' %}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
 
-    <link rel="icon" href="{% static 'img/logo_reserva.ico' %}">
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+			{% block main %}
+			<!-- Header -->
+				<div id="header">
 
-    <link rel="stylesheet" href="{% static 'css/inocoFace.css' %}">
-    <link rel="stylesheet" href="{% static 'css/prueba.css' %}">
+					<!-- Logo -->
+					
+						<h1><a href="{% url 'home' %}" id="logo">SENDEROS</a></h1>
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="{% url 'home' %}">Inicio</a></li>
+								<li>
+                                    {% if user.is_authenticated %}
+                                    <a href="{% url 'ver_perfil' %}">Mi Cuenta</a>
+									<ul>
+										<li><a href="{% url 'ver_perfil' %}">Ver Perfil</a></li>
+										<li><a href="{% url 'logout' %}">Salir</a></li>
+										
+                                        {% if user.is_staff %}
+										<li>
+											<a href="#">Administracion</a>
+											<ul>
+												<li><a href="{% url 'crear_post' %}">Crear Post</a></li>
+												<li><a href="{% url 'posteos' %}">Ver Posts</a></li>
+												<li><a href="{% url 'ver_todos' %}">Ver Mensajes</a></li>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+											</ul>
+										</li>
+										{% else %}
+										<li></li>
+										{% endif %}
+										<li></li>
+										
+									</ul>
+                                    
+                                    {% else %}
+									<a href="{% url 'login' %}">Entrar</a>
+									{% endif %}
+								</li>
+								{% if user.is_authenticated %}
+								{% else %}
+								<li><a href="{% url 'registrate' %}">Registrate</a></li>
+								{% endif %}
+								<li><a href="{% url 'contacto' %}">Contacto</a></li>
+								<li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
+								<li><a href="{% url 'posteos' %}">Ver Posts</a></li>
+								
+							</ul>
+						</nav>
 
-    
-    
-    <title>Senderos</title>
-</head>
-<body>
-    <div class="container">
-      <div class="row">
-        <div class="container">
-          <div id="topbar">
-              <ul>   
-                <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'posteos' %}">Todos los Post</a></li>
-                  {% if user.is_staff %}
-                    <li><a href="{% url 'crear_post' %}">Crear Post</a></li>
-                    <li><a href="{% url 'ver_todos' %}">Mensajes</a></li>
-                  {% else %}
-                  <li><a href="{% url 'contacto' %}">Contacto</a></li>
-                  {% endif %}
-                <li><a href="{% url 'ver_perfil' %}">Perfil</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'contacto' %}">Contacto</a></li>
-                <li><a href="{% url 'registrate' %}">Registro</a></li>
-                <li><a href="{% url 'login' %}">Entrar</a></li>
+				</div>
 
-                {% endif %}
-                <li></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-          <header>
+			<!-- Banner -->
+			
+			{% endblock %}
 
-          </header>
+			<!-- Footer -->
+				<div id="footer">
+					{% comment %} <div class="container">
+						<div class="row">
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>Links to Stuff</h3>
+								<ul class="links">
+									<li><a href="#">Mattis et quis rutrum</a></li>
+									<li><a href="#">Suspendisse amet varius</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum accumsan dolor</a></li>
+									<li><a href="#">Mattis rutrum accumsan</a></li>
+									<li><a href="#">Suspendisse varius nibh</a></li>
+									<li><a href="#">Sed et dapibus mattis</a></li>
+								</ul>
+							</section>
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>More Links to Stuff</h3>
+								<ul class="links">
+									<li><a href="#">Duis neque nisi dapibus</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum accumsan sed</a></li>
+									<li><a href="#">Mattis et sed accumsan</a></li>
+									<li><a href="#">Duis neque nisi sed</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum amet varius</a></li>
+								</ul>
+							</section>
+							<section class="col-6 col-12-narrower">
+								<h3>Get In Touch</h3>
+								<form>
+									<div class="row gtr-50">
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="col-6 col-12-mobilep">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="col-12">
+											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+										</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" class="button alt" value="Send Message" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
+						</div>
+					</div> {% endcomment %}
 
-        {% block main %}{% endblock %}
+					<!-- Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.facebook.com/profile.php?id=100063478005717&mibextid=ZbWKwL" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+						</ul>
 
-        <footer id="pieDePag" align="center">
-          <br>
-          <a href="https://www.facebook.com/profile.php?id=100063478005717&mibextid=ZbWKwL" class="zocial facebook"><span>Siguenos en Facebook</span></a>
-            <p>SENDEROS, RESERVA EDUCATIVA EXPERIMENTAL Y GRANJA AUTOSUSTENTABLE</p>
-            <P>Produced by Grupo 8 - Informatorio Chaco</P>
-        </footer>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Grupo 8 Informatorio 2022. All rights reserved</li><li>Design: Olmedo Juan Carlos</li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'js/browser.min.js' %}"></script>
+			<script src="{% static 'js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
 </html>

@@ -5,27 +5,114 @@
 {% block h1 %}SENDEROS{% endblock %}
 
 {% block main %}
+			<!-- Header -->
+            <div id="header">
+
+                <!-- Logo -->
+                    <h1><a href="{% url 'home' %}" id="logo">SENDEROS</a></h1>
+
+                <!-- Nav -->
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Inicio</a></li>
+                            <li>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'ver_perfil' %}">Mi Cuenta</a>
+                                <ul>
+                                    <li><a href="{% url 'ver_perfil' %}">Ver Perfil</a></li>
+                                    <li><a href="{% url 'logout' %}">Salir</a></li>
+                                    
+                                    {% if user.is_staff %}
+                                    <li>
+                                        <a href="#">Administracion</a>
+                                        <ul>
+                                            <li><a href="{% url 'crear_post' %}">Crear Post</a></li>
+                                            <li><a href="{% url 'posteos' %}">Ver Posts</a></li>
+                                            <li><a href="{% url 'ver_todos' %}">Ver Mensajes</a></li>
+
+                                        </ul>
+                                    </li>
+                                    {% else %}
+                                    <li></li>
+                                    {% endif %}
+                                    <li></li>
+                                    
+                                </ul>
+                                
+                                {% else %}
+                                <a href="{% url 'login' %}">Entrar</a>
+                                {% endif %}
+                            </li>
+                            {% if user.is_authenticated %}
+                            {% else %}
+                            <li class="current"><a href="{% url 'registrate' %}">Registrate</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                            <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
+                            <li><a href="{% url 'posteos' %}">Ver Posts</a></li>
+                            
+                        </ul>
+                    </nav>
+
+            </div>
 {% block barra_busqueda %}
 {% endblock barra_busqueda %}
 
     {% load static %}
+    <section class="wrapper style1">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-3 col-12-narrower">
+                    <div id="sidebar1">
 
-    <main id="mainRegistrate">
+                        <!-- Sidebar 1 -->
 
-        <h2 class="titulo">Registro</h2>
+                            <section>
+                                <h3></h3>
+                                <p></p>
+                                <footer>
+                                </footer>
+                            </section>
 
-        <p>Para generar tu usuario y formar parte de nuestra comunidad, completá el siguiente formulario. </p>
-        <p class="negrita"> Los campos con (*) son obligatorios</p>
+                            <section>
+                            </section>
 
-        <form id="registroUsuario" method="post">
+                    </div>
+                </div>
+                <div class="col-6 col-12-narrower imp-narrower">
+                    <div id="content">
 
-            {% csrf_token %}
-            {{ formulario }}
+                        <!-- Content -->
 
-            <button type="submit" class="btn btn-success">Registrarme</button>
-            
-        </form>
-        <br>
-    </main>
+                            <article>
+                                <header>
+                                    <h2>Registro</h2>
+                                </header>
+                            <p>Para generar tu usuario y formar parte de nuestra comunidad, completá el siguiente formulario. </p>
+                            <p class="negrita"> Los campos con (*) son obligatorios</p>
+                            <form id="registroUsuario" method="post">
+                                {% csrf_token %}
+                                {{ formulario }}
+                                <br>
+                                <button type="submit" class="btn btn-success">Registrarme</button>
+        
+                            </form>
+                            <br>
+                            </article>
+
+                    </div>
+                </div>
+                <div class="col-3 col-12-narrower">
+                    <div id="sidebar2">
+
+                        <!-- Sidebar 2 -->
+
+                            <section>
+                            </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

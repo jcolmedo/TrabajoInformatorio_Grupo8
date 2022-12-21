@@ -6,10 +6,62 @@
 
 {% block main %}
 {% load static %}
+			<!-- Header -->
+            <div id="header">
+
+                <!-- Logo -->
+                    <h1><a href="{% url 'home' %}" id="logo">SENDEROS</a></h1>
+                    
+                <!-- Nav -->
+                    <nav id="nav">
+                        <ul>
+                            <li class="current"><a href="{% url 'home' %}">Inicio</a></li>
+                            <li>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'ver_perfil' %}">Mi Cuenta</a>
+                                <ul>
+                                    <li><a href="{% url 'ver_perfil' %}">Ver Perfil</a></li>
+                                    <li><a href="{% url 'logout' %}">Salir</a></li>
+                                    
+                                    {% if user.is_staff %}
+                                    <li>
+                                        <a href="#">Administracion</a>
+                                        <ul>
+                                            <li><a href="{% url 'crear_post' %}">Crear Post</a></li>
+                                            <li><a href="{% url 'posteos' %}">Ver Posts</a></li>
+                                            <li><a href="{% url 'ver_todos' %}">Ver Mensajes</a></li>
+
+                                        </ul>
+                                    </li>
+                                    {% else %}
+                                    <li></li>
+                                    {% endif %}
+                                    <li></li>
+                                    
+                                </ul>
+                                
+                                {% else %}
+                                <a href="{% url 'login' %}">Entrar</a>
+                                {% endif %}
+                            </li>
+                            {% if user.is_authenticated %}
+                            {% else %}
+                            <li><a href="{% url 'registrate' %}">Registrate</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                            <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
+                            <li><a href="{% url 'posteos' %}">Ver Posts</a></li>
+                            
+                        </ul>
+                    </nav>
+
+            </div>
+
+<section class="wrapper style1">
 <div class="container" >
     <div class="col-12"  >
         <div class="card" >
-            <h3 class= "card-header" align="center">Sobre Nosotros</h3>
+            
             <div class="card-body" align="center">
                 <div>
                     <p class="text">
@@ -72,13 +124,14 @@
       </div>
     </div>
   </div>
+</section>
+
+<section class="wrapper style1">
 <div class="container" align="center">
-    <div class="col-14">
-        <div class="row">
-            <dir class="col-lg-8 col-md-10 mx-auto">
+    <div class="content">
+        <article>
                 {% if posts %}
                     {% for post in posts %}
-                        <div class="card">
                             
                                 <h3 class="post-title">
                                     Titulo: {{ post.titulo }}
@@ -95,16 +148,14 @@
                                 {{ post.fecha_creacion }}
                             </p>
                             <img src="{{ post.imagen.url }}" alt="">
-                        </div>
                         <a href="{% url 'post' post.id %}" class="btn btn-primary">Ver mas</a>
                     {% endfor %}
                 {% else %}
                 <h1>No existen post registrados! </h1>
                 {% endif %}
-            </dir>
-        {% comment %} </div> {% endcomment %}
+        <article>
     </div>
-    {% comment %} {% endfor %} {% endcomment %}
 </div>
 
+</section>
 {% endblock %}
